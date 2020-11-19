@@ -9,32 +9,37 @@ namespace LXTY_NameOfTask
             var sol = new Solution();
             var cases = new TestCase[]
             {
-                new TestCase { A=new int[] { 1, 3, 1, 4, 2, 3, 5, 4 } }, // Ans = 1
-                new TestCase { A=new int[] { 7 } }, // Ans = 7
-                new TestCase { A=new int[] { 1 } }, // Ans = 1
+                new TestCase { A = 1, Expected = 1},
             };
+
+            Stopwatch sw = new Stopwatch();
 
             foreach (var @case in cases)
             {
-                Console.WriteLine(sol.solution(@case.X, @case.A));
+                sw.Restart();
+                var res = sol.solution(@case.A, @case.B, @case.K);
+                sw.Stop();
+                Console.WriteLine($"{res} - {(res == @case.Expected ? "CORRECT" : "FAILED")} in {sw.ElapsedMilliseconds}ms.");
             }
         }
     }
 
     class TestCase
     {
-        public int[] A { get; set; }
+        public int A { get; set; }
+
+        public int Expected { get; set; }
     }
 
     /*
-     * This is place for analisys
+     * 
      */
 
     class Solution
     {
-        public int solution(int[] A)
+        public int solution(int A)
         {
-            return A[0];
+            return A;
         }
     }
 }
