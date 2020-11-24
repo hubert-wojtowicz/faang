@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Linq;
+using System.Diagnostics;
 
-namespace LXTY_NameOfTask
+namespace L6T2_MaxProductOfThree
 {
     class Program
     {
@@ -10,7 +10,7 @@ namespace LXTY_NameOfTask
             var sol = new Solution();
             var cases = new TestCase[]
             {
-                new TestCase { A = new[] { 2, 1, 1, 2, 3, 1 }, Expected = 3},
+                new TestCase { A = new[] { -3,1,2,-2,5,6 }, Expected = 60},
             };
 
             Stopwatch sw = new Stopwatch();
@@ -18,7 +18,7 @@ namespace LXTY_NameOfTask
             foreach (var @case in cases)
             {
                 sw.Restart();
-                var res = sol.solution(@case.A, @case.K);
+                var res = sol.solution(@case.A);
                 sw.Stop();
                 Console.WriteLine($"{res} - {(res == @case.Expected ? "CORRECT" : "FAILED")} in {sw.ElapsedMilliseconds}ms.");
             }
@@ -40,7 +40,12 @@ namespace LXTY_NameOfTask
     {
         public int solution(int[] A)
         {
-            return A.Distinct().Count;
+            Array.Sort(A);
+
+            var op1 = A[A.Length - 1] * A[A.Length - 2] * A[A.Length - 3];
+            var op2 = A[0] * A[1] * A[A.Length - 1];
+
+            return Math.Max(op1, op2);
         }
     }
 }

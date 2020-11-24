@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 
-namespace LXTY_NameOfTask
+namespace L6T1_Distinct
 {
     class Program
     {
@@ -18,7 +19,7 @@ namespace LXTY_NameOfTask
             foreach (var @case in cases)
             {
                 sw.Restart();
-                var res = sol.solution(@case.A, @case.K);
+                var res = sol.solution(@case.A);
                 sw.Stop();
                 Console.WriteLine($"{res} - {(res == @case.Expected ? "CORRECT" : "FAILED")} in {sw.ElapsedMilliseconds}ms.");
             }
@@ -40,7 +41,7 @@ namespace LXTY_NameOfTask
     {
         public int solution(int[] A)
         {
-            return A.Distinct().Count;
+            return A.Distinct().Count();
         }
     }
 }
