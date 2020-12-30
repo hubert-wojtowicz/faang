@@ -31,8 +31,12 @@ namespace avl_three
 
             var p9 = tree.Predecessor(9);
             var s9 = tree.Successor(9);
+            var p12 = tree.Predecessor(12);
+            var s12 = tree.Successor(12);
             Console.WriteLine($"Predecessor of 9 {(p9 == null ? "X" : p9.Value.ToString())}");
             Console.WriteLine($"Successor of 9 {(s9 == null ? "X" : s9.Value.ToString())}");
+            Console.WriteLine($"Predecessor of 12 {(p12 == null ? "X" : p12.Value.ToString())}");
+            Console.WriteLine($"Successor of 12 {(s12 == null ? "X" : s12.Value.ToString())}");
         }
     }
     public interface IPriorityQueue
@@ -101,14 +105,14 @@ namespace avl_three
                 if (n.Left != null)
                     Insert(n.Left, x);
                 else
-                    n.Left = new Node { Value = x };
+                    n.Left = new Node { Value = x, Parent = n };
             }
             else
             {
                 if (n.Right != null)
                     Insert(n.Right, x);
                 else
-                    n.Right = new Node { Value = x };
+                    n.Right = new Node { Value = x, Parent = n };
             }
         }
 
@@ -148,12 +152,50 @@ namespace avl_three
 
         public int? Predecessor(int x)
         {
-            throw new NotImplementedException();
+            var xn = Find(x);
+            if (xn == null)
+            {
+                return null;
+            }
+
+            if (xn.Left != null)
+            {
+                return Max(xn.Left);
+            }
+
+            var yn = xn.Parent;
+            while (yn != null && xn == yn.Left)
+            {
+                xn = yn;
+                yn = yn.Parent;
+            }
+
+            return yn?.Value;
         }
 
+        // most left element in right subtree 
+        // closest ancestor whose left son is ancescor of x
         public int? Successor(int x)
         {
-            throw new NotImplementedException();
+            var xn = Find(x);
+            if (xn == null)
+            {
+                return null;
+            }
+
+            if (xn.Right != null)
+            {
+                return Min(xn.Right);
+            }
+
+            var yn = xn.Parent;
+            while (yn != null && xn == yn.Right)
+            {
+                xn = yn;
+                yn = yn.Parent;
+            }
+
+            return yn?.Value;
         }
 
         public Node Find(int x)
@@ -189,5 +231,7 @@ namespace avl_three
         public Node Left { get; set; }
 
         public Node Right { get; set; }
+
+        public Node Parent { get; set; }
     }
 }
