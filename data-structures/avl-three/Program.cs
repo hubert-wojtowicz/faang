@@ -37,36 +37,82 @@ namespace avl_three
             Console.WriteLine($"Successor of 9 {(s9 == null ? "X" : s9.Value.ToString())}");
             Console.WriteLine($"Predecessor of 12 {(p12 == null ? "X" : p12.Value.ToString())}");
             Console.WriteLine($"Successor of 12 {(s12 == null ? "X" : s12.Value.ToString())}");
+
+            tree.Delete(tree.Find(17));
         }
     }
     public interface IPriorityQueue
     {
-        void Insert(int x);
-        bool Delete(int x);
-        int? Min();
-        int? Max();
+        void Insert(Node x);
+        Node Delete(Node x);
+        Node Min(Node r);
+        Node Max(Node r);
     }
 
     public interface IAvlTree : IPriorityQueue
     {
         Node Root { get; set; }
-        int? Successor(int x);
-        int? Predecessor(int x);
+        Node Successor(Node x);
+        Node Predecessor(Node x);
         void InOrderTraversal();
     }
 
     public interface IMyTree : IAvlTree
     {
+        void Insert(int x);
+        Node Successor(int x);
+        Node Predecessor(int x);
         Node Find(int x);
+        Node Min();
+        Node Max();
     }
 
     public class AvlThree : IMyTree
     {
         public Node Root { get; set; }
 
-        public bool Delete(int x)
+        public Node Delete(Node z)
         {
-            throw new NotImplementedException();
+            if (z == null)
+                return null;
+
+            // select node that will be deleted from tree
+            Node y;
+            if (z.Left == null || z.Right == null)
+            {
+                y = z;
+            }
+            else
+            {
+                y = Successor(z);
+            }
+
+            // select non-null child
+            Node x;
+            if (y.Left != null)
+                x = y.Left;
+            else
+                x = y.Right;
+
+            // if exist non-null child assign it to y
+            if (x != null)
+                x.Parent = y.Parent;
+
+            if (y.Parent == null)
+                Root = x;
+            else
+            {
+                if (y == y.Parent.Left)
+                    y.Parent.Left = x;
+                else
+                    y.Parent.Right = x;
+            }
+            if (y != z)
+            {
+                z.Value = y.Value;
+            }
+
+            return y;
         }
 
         public void InOrderTraversal()
@@ -87,115 +133,129 @@ namespace avl_three
 
         public void Insert(int x)
         {
-            //todo: balancign tree
+            Insert(new Node { Value = x });
+        }
+
+        public void Insert(Node x)
+        {
             if (Root != null)
             {
                 Insert(Root, x);
             }
             else
             {
-                Root = new Node { Value = x };
+                Root = x;
             }
         }
 
-        private void Insert(Node n, int x)
+        private void Insert(Node r, Node x)
         {
-            if (x < n.Value)
+            if (x.Value < r.Value)
             {
-                if (n.Left != null)
-                    Insert(n.Left, x);
+                if (r.Left != null)
+                    Insert(r.Left, x);
                 else
-                    n.Left = new Node { Value = x, Parent = n };
+                {
+                    r.Left = x;
+                    x.Parent = r;
+                }
             }
             else
             {
-                if (n.Right != null)
-                    Insert(n.Right, x);
+                if (r.Right != null)
+                    Insert(r.Right, x);
                 else
-                    n.Right = new Node { Value = x, Parent = n };
+                {
+                    r.Right = x;
+                    x.Parent = r;
+                }
             }
         }
 
-        public int? Max()
-        {
-            return Root != null ? Max(Root) : default(int?);
-        }
+        public Node Max() => Max(Root);
 
-        private int Max(Node n)
+        public Node Max(Node r)
         {
-            if (n.Right != null)
+            if (r?.Right != null)
             {
-                return Max(n.Right);
+                return Max(r.Right);
             }
             else
             {
-                return n.Value;
+                return r;
             }
         }
 
-        public int? Min()
-        {
-            return Root != null ? Min(Root) : default(int?);
-        }
+        public Node Min() => Min(Root);
 
-        private int Min(Node n)
+        public Node Min(Node r)
         {
-            if (n.Left != null)
+            if (r?.Left != null)
             {
-                return Min(n.Left);
+                return Min(r.Left);
             }
             else
             {
-                return n.Value;
+                return r;
             }
         }
 
-        public int? Predecessor(int x)
+        public Node Predecessor(int x)
         {
             var xn = Find(x);
-            if (xn == null)
+            return Predecessor(xn);
+        }
+
+        public Node Predecessor(Node x)
+        {
+            if (x == null)
             {
                 return null;
             }
 
-            if (xn.Left != null)
+            if (x.Left != null)
             {
-                return Max(xn.Left);
+                return Max(x.Left);
             }
 
-            var yn = xn.Parent;
-            while (yn != null && xn == yn.Left)
+            var y = x.Parent;
+            while (y != null && x == y.Left)
             {
-                xn = yn;
-                yn = yn.Parent;
+                x = y;
+                y = y.Parent;
             }
 
-            return yn?.Value;
+            return y;
+        }
+
+        public Node Successor(int x)
+        {
+            var xn = Find(x);
+            return Successor(xn);
         }
 
         // most left element in right subtree 
         // closest ancestor whose left son is ancescor of x
-        public int? Successor(int x)
+        public Node Successor(Node x)
         {
-            var xn = Find(x);
-            if (xn == null)
+            if (x == null)
             {
                 return null;
             }
 
-            if (xn.Right != null)
+            if (x.Right != null)
             {
-                return Min(xn.Right);
+                return Min(x.Right);
             }
 
-            var yn = xn.Parent;
-            while (yn != null && xn == yn.Right)
+            var yn = x.Parent;
+            while (yn != null && x == yn.Right)
             {
-                xn = yn;
+                x = yn;
                 yn = yn.Parent;
             }
 
-            return yn?.Value;
+            return yn;
         }
 
         public Node Find(int x)
