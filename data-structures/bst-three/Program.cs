@@ -8,7 +8,7 @@ namespace avl_three
     {
         static void Main(string[] args)
         {
-            var tree = new AvlThree();
+            var tree = new BstThree();
 
             tree.Insert(50);
             tree.Insert(17);
@@ -49,7 +49,7 @@ namespace avl_three
         Node Max(Node r);
     }
 
-    public interface IAvlTree : IPriorityQueue
+    public interface IBstTree : IPriorityQueue
     {
         Node Root { get; set; }
         Node Successor(Node x);
@@ -57,7 +57,7 @@ namespace avl_three
         void InOrderTraversal();
     }
 
-    public interface IMyTree : IAvlTree
+    public interface IMyTree : IBstTree
     {
         void Insert(int x);
         Node Successor(int x);
@@ -67,7 +67,7 @@ namespace avl_three
         Node Max();
     }
 
-    public class AvlThree : IMyTree
+    public class BstThree : IMyTree
     {
         public Node Root { get; set; }
 
