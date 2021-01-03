@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>_156_Maximum_sum_of_lengths_non_overlapping_subarrays</RootNamespace>
+    <RootNamespace>_80_Count_maximum_points_on_same_line</RootNamespace>
   </PropertyGroup>
 
 </Project>
