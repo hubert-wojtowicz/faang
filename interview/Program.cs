@@ -34,21 +34,21 @@ namespace interview
             var eStack = new Stack<char>();
             for (int i = 0; i < exp.Length; i++)
             {
-                if (bracketChars.Contains(exp[i]))
-                {
-                    if (exp[i] == '{' || exp[i] == '[' || exp[i] == '(')
-                    {
-                        eStack.Push(exp[i]);
-                    }
-                    else
-                    {
-                        if ((eStack.Peek() != '{' && exp[i] == '}')
-                         || (eStack.Peek() != '[' && exp[i] == ']')
-                         || (eStack.Peek() != '(' && exp[i] == ')'))
-                            return false;
+                if (!bracketChars.Contains(exp[i]))
+                    continue;
 
-                        eStack.Pop();
-                    }
+                if (exp[i] == '{' || exp[i] == '[' || exp[i] == '(')
+                {
+                    eStack.Push(exp[i]);
+                }
+                else
+                {
+                    if ((eStack.Peek() != '{' && exp[i] == '}')
+                     || (eStack.Peek() != '[' && exp[i] == ']')
+                     || (eStack.Peek() != '(' && exp[i] == ')'))
+                        return false;
+
+                    eStack.Pop();
                 }
             }
 
