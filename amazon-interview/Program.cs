@@ -52,7 +52,7 @@ namespace interview
                 }
             }
 
-            return true;
+            return eStack.Count == 0;
         }
     }
 
@@ -109,6 +109,7 @@ namespace interview
                 }
             }
 
+            // bug here
             return true;
         }
     }
