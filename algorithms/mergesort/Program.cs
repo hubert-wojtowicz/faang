@@ -6,10 +6,14 @@ namespace mergesort
     {
         static void Main(string[] args)
         {
-            int[] tbl = { -2, 3, 1, -4, 11, 7, 1 };
             var solver = new Solution();
+            int[] tbl = { -2, 3, 1, -4, 11, 7, 1 };
             solver.Sort(tbl);
             Console.WriteLine(string.Join(", ", tbl));
+
+            int[] tbl2 = { -2};
+            solver.Sort(tbl2);
+            Console.WriteLine(string.Join(", ", tbl2));
         }
     }
 
@@ -36,29 +40,20 @@ namespace mergesort
 
         private void Merge(int[] A, int p, int q, int r)
         {
-            int n1 = q - p + 1;
-            int n2 = r - q;
-            int[] L = new int[n1];
-            int[] P = new int[n2];
+            int n1 = q - p + 1, n2 = r - q, i = p, k = 0, j = 0;
+            int[] L = new int[n1], P = new int[n2];
 
-            Array.Copy(A, p, L, 0, n1);
-            Array.Copy(A, q + 1, P, 0, n2);
+            Array.Copy(A, p, L, k, n1);
+            Array.Copy(A, q + 1, P, j, n2);
 
-            int i = p,k = 0, j = 0;
             while (i <= r && k < n1 && j < n2)
-            {
-                 A[i++] = L[k] <= P[j] ? L[k++] : P[j++];
-            }
+                A[i++] = L[k] <= P[j] ? L[k++] : P[j++];
 
-            while(i <= r && k < n1)
-            {
+            while (i <= r && k < n1)
                 A[i++] = L[k++];
-            }
 
             while (i <= r && j < n2)
-            {
                 A[i++] = P[j++];
-            }
         }
     }
 }
