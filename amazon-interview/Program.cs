@@ -28,6 +28,7 @@ namespace interview
 
     public static class SolutionOptimized
     {
+        // time O(n) as each character analyzed, additional memory space over input O(1)
         public static bool IsBracketsValid(string exp)
         {
             var bracketChars = new HashSet<char>() { '{', '}', '[', ']', '(', ')' };
