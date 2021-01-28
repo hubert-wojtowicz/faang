@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 
 namespace quicksort
 {
@@ -27,10 +29,17 @@ namespace quicksort
         {
             if (p < r && A != null)
             {
-                int q = Partition(A, p, r);
+                int q = RandomizedPartition(A, p, r);
                 QuickSort(A, p, q - 1);
                 QuickSort(A, q + 1, r);
             }
+        }
+
+        private int RandomizedPartition(int[] A, int p, int r)
+        {
+            int i = new Random().Next(p, r);
+            Swap(A, i, r);
+            return Partition(A, p, r);
         }
 
         private int Partition(int[] A, int p, int r)
