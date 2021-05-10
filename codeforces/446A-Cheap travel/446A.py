@@ -1,4 +1,5 @@
 # https://codeforces.com/problemset/problem/466/A
+# https://codeforces.com/problemset/submission/466/115897160
 #
 # a - cost of ticket for 1 ride
 # b - cost of ticket for m rides
