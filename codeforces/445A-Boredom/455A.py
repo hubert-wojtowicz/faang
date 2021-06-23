@@ -50,7 +50,7 @@ def solution(A):
     return F
 
         
-is_test = False        
+is_test = False
 if __name__ == '__main__':
     if is_test:
         print ('Start tests..')
