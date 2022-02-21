@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12-IntegerToRoman", "12-Int
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "15-3Sum", "15-3Sum\15-3Sum.csproj", "{033D893F-9AEB-4330-89F3-AD5F2C256551}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "274-H-Index", "274_H-Index\274-H-Index.csproj", "{8763E179-0B88-4758-812A-D6F72355525A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "274-H-Index", "274_H-Index\274-H-Index.csproj", "{8763E179-0B88-4758-812A-D6F72355525A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "366-FindLeavesOfBinaryTree", "366-FindLeavesOfBinaryTree\366-FindLeavesOfBinaryTree.csproj", "{FBB66A96-E31C-437D-824B-F52537AEC0B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{8763E179-0B88-4758-812A-D6F72355525A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8763E179-0B88-4758-812A-D6F72355525A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8763E179-0B88-4758-812A-D6F72355525A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB66A96-E31C-437D-824B-F52537AEC0B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB66A96-E31C-437D-824B-F52537AEC0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB66A96-E31C-437D-824B-F52537AEC0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB66A96-E31C-437D-824B-F52537AEC0B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
