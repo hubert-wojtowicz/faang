@@ -39,11 +39,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LongestSubstringwithAtMostT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateParentheses", "GenerateParentheses\GenerateParentheses.csproj", "{BFD93FBC-BDB3-41F8-B2FC-76FED0D5324A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryTreeMaximumPathSum", "BinaryTreeMaximumPathSum\BinaryTreeMaximumPathSum.csproj", "{EF422D18-0E44-45A2-91BA-A998941E899A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTreeMaximumPathSum", "BinaryTreeMaximumPathSum\BinaryTreeMaximumPathSum.csproj", "{EF422D18-0E44-45A2-91BA-A998941E899A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberofIslands", "NumberofIslands\NumberofIslands.csproj", "{9E44B3CD-FAFF-4027-8C71-1487EF5F743C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberofIslands", "NumberofIslands\NumberofIslands.csproj", "{9E44B3CD-FAFF-4027-8C71-1487EF5F743C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseRobber", "HouseRobber\HouseRobber.csproj", "{939C5600-A979-4E79-B292-A760B1F5735C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseRobber", "HouseRobber\HouseRobber.csproj", "{939C5600-A979-4E79-B292-A760B1F5735C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeleteAndEarn", "DeleteAndEarn\DeleteAndEarn.csproj", "{95ED7911-E72C-4241-86EF-CD485EA9424F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +133,10 @@ Global
 		{939C5600-A979-4E79-B292-A760B1F5735C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{939C5600-A979-4E79-B292-A760B1F5735C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{939C5600-A979-4E79-B292-A760B1F5735C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95ED7911-E72C-4241-86EF-CD485EA9424F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95ED7911-E72C-4241-86EF-CD485EA9424F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95ED7911-E72C-4241-86EF-CD485EA9424F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95ED7911-E72C-4241-86EF-CD485EA9424F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,6 +155,7 @@ Global
 		{EF422D18-0E44-45A2-91BA-A998941E899A} = {6EEBE46B-B17A-4729-A268-DDC0C24268B1}
 		{9E44B3CD-FAFF-4027-8C71-1487EF5F743C} = {6EEBE46B-B17A-4729-A268-DDC0C24268B1}
 		{939C5600-A979-4E79-B292-A760B1F5735C} = {6EEBE46B-B17A-4729-A268-DDC0C24268B1}
+		{95ED7911-E72C-4241-86EF-CD485EA9424F} = {6EEBE46B-B17A-4729-A268-DDC0C24268B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2FE1DB6F-B740-4556-873D-A597721D4F66}
