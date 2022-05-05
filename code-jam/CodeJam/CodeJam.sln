@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PunchedCards", "PunchedCards\PunchedCards.csproj", "{41DD20D6-55DD-44DC-BCBA-C8AA0E5EF1AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PunchedCards", "PunchedCards\PunchedCards.csproj", "{41DD20D6-55DD-44DC-BCBA-C8AA0E5EF1AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DPrinting", "3DPrinting\3DPrinting.csproj", "{AEF34AC6-1FBF-404F-81C4-C4BA1F084B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3DPrinting", "3DPrinting\3DPrinting.csproj", "{AEF34AC6-1FBF-404F-81C4-C4BA1F084B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "d1000000", "d1000000\d1000000.csproj", "{D846CAEE-960D-45C6-8A60-07A964346714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "d1000000", "d1000000\d1000000.csproj", "{D846CAEE-960D-45C6-8A60-07A964346714}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainReactions", "ChainReactions\ChainReactions.csproj", "{EA80F835-2889-44ED-AD0E-E95A579ED9CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainReactions", "ChainReactions\ChainReactions.csproj", "{EA80F835-2889-44ED-AD0E-E95A579ED9CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2022-Elimination", "2022-Elimination", "{E19C0042-2A31-4F91-B0A2-11D5021DFB36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2022-Round1A", "2022-Round1A", "{11FD7B29-B9B3-4199-A19A-8EEC8DB390B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleorOneThing", "DoubleorOneThing\DoubleorOneThing.csproj", "{490A68CE-6178-4EAE-8CCC-4746279CFCB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,20 @@ Global
 		{EA80F835-2889-44ED-AD0E-E95A579ED9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA80F835-2889-44ED-AD0E-E95A579ED9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA80F835-2889-44ED-AD0E-E95A579ED9CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{490A68CE-6178-4EAE-8CCC-4746279CFCB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{490A68CE-6178-4EAE-8CCC-4746279CFCB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{490A68CE-6178-4EAE-8CCC-4746279CFCB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{490A68CE-6178-4EAE-8CCC-4746279CFCB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{41DD20D6-55DD-44DC-BCBA-C8AA0E5EF1AB} = {E19C0042-2A31-4F91-B0A2-11D5021DFB36}
+		{AEF34AC6-1FBF-404F-81C4-C4BA1F084B60} = {E19C0042-2A31-4F91-B0A2-11D5021DFB36}
+		{D846CAEE-960D-45C6-8A60-07A964346714} = {E19C0042-2A31-4F91-B0A2-11D5021DFB36}
+		{EA80F835-2889-44ED-AD0E-E95A579ED9CF} = {E19C0042-2A31-4F91-B0A2-11D5021DFB36}
+		{490A68CE-6178-4EAE-8CCC-4746279CFCB3} = {11FD7B29-B9B3-4199-A19A-8EEC8DB390B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9AA3AE5-F807-417F-AABC-162242953730}

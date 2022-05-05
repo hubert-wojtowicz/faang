@@ -8,79 +8,53 @@ namespace ChainReactions
     {
         static void Main(string[] args)
         {
-            int t;
-            t = int.Parse(Console.ReadLine());
+            int t = int.Parse(Console.ReadLine());
             for (int i = 0; i < t; i++)
             {
-                var N = int.Parse(Console.ReadLine());
-                var F = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
-                var P = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
-
+                var root = GetThree();
                 var solver = new Solution();
-                Console.WriteLine($"Case #{i + 1}: {solver.Solve(F, P)}");
+                Console.WriteLine($"Case #{i + 1}: {solver.Solve(root)}");
             }
         }
 
+        private static Node GetThree()
+        {
+            var n = int.Parse(Console.ReadLine());
+            var f = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
+            var p = Console.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray();
+
+            var nodes = new Node[n + 1];
+            var root = new Node() { Value = 0 };
+            nodes[0] = root;
+            for (int i = 1; i < n + 1; i++)
+            {
+                nodes[i] = new Node() { Value = f[i - 1] };
+                nodes[p[i - 1]].Children.Add(nodes[i]);
+            }
+
+            return root;
+        }
+    }
+
+    public class Node
+    {
+        public int Value { get; set; }
+        public List<Node> Children { get; set; } = new List<Node>();
     }
 
     public class Solution
     {
-        public int[] F { get; private set; }
-        public Dictionary<int,List<int>> R { get; private set; }
-        public List<int> RootIdxs { get; private set; }
-        public int Total { get; set; }
-
-        public int Solve(int[] F, int[] P)
+        public int Solve(Node root)
         {
-            this.F = F;
-            Total = 0;
-            R = new Dictionary<int, List<int>>();
-            RootIdxs = new List<int>();
-            for (int i = 0; i < P.Length; i++)
+            if (root.Children.Count == 0)
+                return root.Value;
+            else if (root.Children.Count == 1)
+                return Math.Max(Solve(root.Children.Single()), root.Value);
+            else
             {
-                if (P[i] != 0)
-                {
-                    if (!R.ContainsKey(P[i] - 1))
-                        R.Add(P[i] - 1,new List<int>() { i });
-                    else
-                        R[P[i] - 1].Add(i);
-                }
-                else
-                {
-                    RootIdxs.Add(i);
-                }
+                var orderedChildren = root.Children.Select(x => (x, ans: Solve(x))).OrderBy(x => x.ans).ToList();
+                return Math.Max(orderedChildren.First().ans, root.Value) + orderedChildren.Skip(1).Sum(x => x.ans);
             }
-
-            foreach (var index in RootIdxs)
-            {
-                CalculateMaxBenefit(index);
-            }
-
-            return RootIdxs.Sum(rootIdx => F[rootIdx]) + Total;
-        }
-
-        void CalculateMaxBenefit(int root)
-        {
-            if (!R.ContainsKey(root)) return;
-
-            foreach (var descIdx in R[root])
-            {
-                CalculateMaxBenefit(descIdx);
-            }
-
-            var childrenIdxs = R[root];
-            var minChildIdx = childrenIdxs[0];
-            if (childrenIdxs.Count > 1)
-            {
-                foreach (var childIdx in childrenIdxs.Skip(1))
-                {
-                    if (F[childIdx] < F[minChildIdx])
-                        minChildIdx = childIdx;
-                }
-                Total += (R[root].Sum(idx => F[idx]) - F[minChildIdx]);
-            }
-
-            F[root] = Math.Max(F[root], F[minChildIdx]);
         }
     }
 }
