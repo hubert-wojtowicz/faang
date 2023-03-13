@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "206-ReverseLinkedList", "206-ReverseLinkedList\206-ReverseLinkedList.csproj", "{A76AC772-7AA1-4914-81DC-2FB4B4E06EAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "700-SearchInABinarySearchTree", "..\..\700-SearchInABinarySearchTree\700-SearchInABinarySearchTree\700-SearchInABinarySearchTree.csproj", "{EA6E06F3-6E39-477E-8907-CAC26A1DF436}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A76AC772-7AA1-4914-81DC-2FB4B4E06EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76AC772-7AA1-4914-81DC-2FB4B4E06EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76AC772-7AA1-4914-81DC-2FB4B4E06EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76AC772-7AA1-4914-81DC-2FB4B4E06EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6E06F3-6E39-477E-8907-CAC26A1DF436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6E06F3-6E39-477E-8907-CAC26A1DF436}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6E06F3-6E39-477E-8907-CAC26A1DF436}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6E06F3-6E39-477E-8907-CAC26A1DF436}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B11E18A2-72E1-4EEB-86F3-9CA071E354BC}
+	EndGlobalSection
+EndGlobal

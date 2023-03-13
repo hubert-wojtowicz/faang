@@ -5,6 +5,8 @@ using System.Text;
 
 namespace _15_3Sum
 {
+
+    //https://www.code-recipe.com/post/three-sum
     internal class Program
     {
         static void Main(string[] args)
@@ -27,39 +29,49 @@ namespace _15_3Sum
 
     public class Solution
     {
-        // O(n^2)
-        public IList<IList<int>> ThreeSum(int[] nums) // O(n^2)
+        public IList<IList<int>> ThreeSum(int[] nums)
         {
             Array.Sort(nums);// O(n lg n)
-            var res = new HashSet<Tuple<int, int, int>>();
-            var valueIndexDict = new Dictionary<int, IList<int>>();
+            var map = new Dictionary<int, List<int>>(); //key: target value: indexes
+            var seen = new HashSet<string>();
+            var sol = new List<IList<int>>();
 
-            for (var i = 0; i < nums.Length; i++) // O(n^2)
+            for (int i = 0; i < nums.Length; i++)
             {
-                if (valueIndexDict.TryGetValue(nums[i], out var indexes)) // O(1)
+                if (map.ContainsKey(nums[i]))
                 {
-                    indexes.Add(i); // O(n)
-                    continue;
+                    map[nums[i]].Add(i);
                 }
-                valueIndexDict.Add(nums[i], new List<int>() { i });
+                else
+                {
+                    map.Add(nums[i], new List<int>() { i });
+                }
             }
 
-            for (var i = 0; i < nums.Length; i++) // O(n^2)
+            for (int i = 0; i < nums.Length; i++)
             {
-                for (var j = i + 1; j < nums.Length; j++) // those 2 loops gives all unique pairs (i,j)
+                for (int j = i + 1; j < nums.Length; j++) // O(n^2)
                 {
-                    var searchValue = -(nums[i] + nums[j]);
-                    if (!valueIndexDict.TryGetValue(searchValue, out var indexes)) continue;
-                    foreach (var idx in indexes.Where(idx => idx > j))
+                    int target = -nums[i] - nums[j];
+                    if (map.ContainsKey(target))
                     {
-                        var triple = new Tuple<int, int, int>(nums[i], nums[j], nums[idx]);
-                        if (res.Contains(triple)) continue; // O(1)
-                        res.Add(triple);
+                        foreach (var k in map[target].Where(t => t != i && t != j))
+                        {
+                            var a = new int[] { nums[i], nums[j], nums[k] };
+                            Array.Sort(a);
+                            var id = $"{a[0]},{a[1]},{a[2]}";
+
+                            if (!seen.Contains(id))
+                            {
+                                seen.Add(id);
+                                sol.Add(new[] { nums[i], nums[j], nums[k] });
+                            }
+                        }
                     }
                 }
             }
 
-            return res.Select(triple => new int[] { triple.Item1, triple.Item2, triple.Item3 }).ToArray();
+            return sol;
         }
     }
 }
